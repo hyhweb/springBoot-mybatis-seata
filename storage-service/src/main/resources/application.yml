@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: storage-server
+    name: storage-service
     # Nacos 注册中心地址
   cloud:
     nacos:
@@ -12,17 +12,36 @@ spring:
     # seata 服务分组，要与服务端nacos-config.txt中service.vgroup_mapping的后缀对应
     alibaba:
       seata:
-        tx-service-group: fsp_tx_group
+        tx-service-group: my_tx_group
     # 数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/seata-storage?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 123456
-logging:
-  level:
-    io:
-      seata: debug
 mybatis:
   type-aliases-package: com.springboot.storageservice.entity
   mapper-locations: classpath:mapper/*.xml
+#Feign底层使用到httpclient，需要开启这个配置才能使post请求生效
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+#设置ribbon超时时间。默认时间太短。
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+#开启feign的fallback的断路器功能
+feign:
+  hystrix:
+    enabled: true
+logging:
+  level:
+    #开启mybatis-logger-plugin打印sql
+    com: debug
+    io:
+      seata: debug

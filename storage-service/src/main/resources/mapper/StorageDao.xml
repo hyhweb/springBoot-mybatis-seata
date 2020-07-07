@@ -73,7 +73,7 @@
                 residue = #{residue},
             </if>
         </set>
-        where id = #{id}
+        where product_id = #{productId}
     </update>
 
     <!--通过主键删除-->

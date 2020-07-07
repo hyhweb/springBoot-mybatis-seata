@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @since 2020-06-30 16:43:02
  */
 @RestController
-@RequestMapping("account")
+@RequestMapping("/account")
 public class AccountController {
     /**
      * 服务对象
@@ -27,9 +27,17 @@ public class AccountController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("selectOne")
+    @GetMapping("/selectOne")
     public Account selectOne(Long id) {
         return this.accountService.queryById(id);
+    }
+    @PostMapping("/insert")
+    public Account insert(@RequestBody Account account){
+    return this.accountService.insert(account);
+    }
+    @PostMapping("/update")
+    public Account update(@RequestBody Account account){
+        return this.accountService.update(account);
     }
 
 }

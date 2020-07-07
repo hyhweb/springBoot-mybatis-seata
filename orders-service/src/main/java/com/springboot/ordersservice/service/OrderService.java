@@ -1,18 +1,15 @@
-package com.spring.accountservice.service;
+package com.springboot.ordersservice.service;
 
-import com.spring.accountservice.entity.Account;
-import org.springframework.stereotype.Service;
-
+import com.springboot.ordersservice.entity.Order;
 import java.util.List;
 
 /**
- * (Account)表服务接口
+ * (Order)表服务接口
  *
  * @author hyhong
- * @since 2020-06-30 16:43:02
+ * @since 2020-07-03 14:28:24
  */
-@Service
-public interface AccountService {
+public interface OrderService {
 
     /**
      * 通过ID查询单条数据
@@ -20,7 +17,7 @@ public interface AccountService {
      * @param id 主键
      * @return 实例对象
      */
-    Account queryById(Long id);
+    Order queryById(Long id);
 
     /**
      * 查询多条数据
@@ -29,23 +26,23 @@ public interface AccountService {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<Account> queryAllByLimit(int offset, int limit);
+    List<Order> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param account 实例对象
+     * @param order 实例对象
      * @return 实例对象
      */
-    Account insert(Account account);
+    Order insert(Order order);
 
     /**
      * 修改数据
      *
-     * @param account 实例对象
+     * @param order 实例对象
      * @return 实例对象
      */
-    Account update(Account account);
+    Order update(Order order);
 
     /**
      * 通过主键删除数据

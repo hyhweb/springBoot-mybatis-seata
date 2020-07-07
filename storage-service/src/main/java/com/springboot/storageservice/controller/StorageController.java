@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @since 2020-06-30 18:02:32
  */
 @RestController
-@RequestMapping("storage")
+@RequestMapping("/storage")
 public class StorageController {
     /**
      * 服务对象
@@ -27,9 +27,16 @@ public class StorageController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("selectOne")
+    @GetMapping("/selectOne")
     public Storage selectOne(Long id) {
         return this.storageService.queryById(id);
     }
-
+    @PostMapping("/insert")
+    public Storage insert(@RequestBody Storage storage){
+        return this.storageService.insert(storage);
+    }
+    @PostMapping("/update")
+    public Storage update(@RequestBody Storage storage){
+        return this.storageService.update(storage);
+    }
 }

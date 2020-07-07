@@ -1,20 +1,16 @@
-package com.spring.accountservice.dao;
+package com.springboot.ordersservice.dao;
 
-import com.spring.accountservice.entity.Account;
-import org.apache.ibatis.annotations.Mapper;
+import com.springboot.ordersservice.entity.Order;
 import org.apache.ibatis.annotations.Param;
-import org.mybatis.spring.annotation.MapperScan;
-
 import java.util.List;
 
 /**
- * (Account)表数据库访问层
+ * (Order)表数据库访问层
  *
  * @author hyhong
- * @since 2020-06-30 16:43:02
+ * @since 2020-07-03 14:28:24
  */
-@Mapper
-public interface AccountDao {
+public interface OrderDao {
 
     /**
      * 通过ID查询单条数据
@@ -22,7 +18,7 @@ public interface AccountDao {
      * @param id 主键
      * @return 实例对象
      */
-    Account queryById(Long id);
+    Order queryById(Long id);
 
     /**
      * 查询指定行数据
@@ -31,32 +27,32 @@ public interface AccountDao {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<Account> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<Order> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param account 实例对象
+     * @param order 实例对象
      * @return 对象列表
      */
-    List<Account> queryAll(Account account);
+    List<Order> queryAll(Order order);
 
     /**
      * 新增数据
      *
-     * @param account 实例对象
+     * @param order 实例对象
      * @return 影响行数
      */
-    int insert(Account account);
+    int insert(Order order);
 
     /**
      * 修改数据
      *
-     * @param account 实例对象
+     * @param order 实例对象
      * @return 影响行数
      */
-    int update(Account account);
+    int update(Order order);
 
     /**
      * 通过主键删除数据

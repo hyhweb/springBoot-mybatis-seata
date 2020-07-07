@@ -1,4 +1,4 @@
-package com.springboot.storageservice;
+package com.springboot.ordersservice;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -11,10 +11,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-@MapperScan(basePackages = "com.springboot.storageservice.dao")
-public class StorageServiceApplication {
+@MapperScan(basePackages = "com.springboot.ordersservice.dao")
+public class OrdersServiceApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(StorageServiceApplication.class, args);
+    SpringApplication.run(OrdersServiceApplication.class, args);
   }
 }

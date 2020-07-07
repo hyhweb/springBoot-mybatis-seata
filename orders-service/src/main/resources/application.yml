@@ -1,8 +1,8 @@
 server:
-  port: 8081
+  port: 8082
 spring:
   application:
-    name: account-service
+    name: orders-service
     # Nacos 注册中心地址
   cloud:
     nacos:
@@ -15,11 +15,11 @@ spring:
     # 数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/seata-account?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/seata-order?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 123456
 mybatis:
-  type-aliases-package: com.spring.accountservice.entity
+  type-aliases-package: com.springboot.ordersservice.entity
   mapper-locations: classpath:mapper/*.xml
 #Feign底层使用到httpclient，需要开启这个配置才能使post请求生效
 management:
