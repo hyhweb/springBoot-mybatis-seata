@@ -4,17 +4,17 @@
 
     <resultMap type="com.springboot.ordersservice.entity.Order" id="OrderMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
-               <result property="userId" column="user_id" jdbcType="INTEGER"/>
-               <result property="productId" column="product_id" jdbcType="INTEGER"/>
-               <result property="count" column="count" jdbcType="INTEGER"/>
-               <result property="money" column="money" jdbcType="NUMERIC"/>
-               <result property="status" column="status" jdbcType="INTEGER"/>
-           </resultMap>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="count" column="count" jdbcType="INTEGER"/>
+        <result property="money" column="money" jdbcType="NUMERIC"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="OrderMap">
         select
-          id, user_id, product_id, count, money, status
+        id, user_id, product_id, count, money, status
         from `order`
         where id = #{id}
     </select>
@@ -22,7 +22,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="OrderMap">
         select
-          id, user_id, product_id, count, money, status
+        id, user_id, product_id, count, money, status
         from `order`
         limit #{offset}, #{limit}
     </select>
@@ -30,7 +30,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="OrderMap">
         select
-          id, user_id, product_id, count, money, status
+        id, user_id, product_id, count, money, status
         from `order`
         <where>
             <if test="id != null">

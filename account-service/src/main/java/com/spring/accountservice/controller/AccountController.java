@@ -31,12 +31,14 @@ public class AccountController {
     public Account selectOne(Long id) {
         return this.accountService.queryById(id);
     }
+
     @PostMapping("/insert")
-    public Account insert(@RequestBody Account account){
-    return this.accountService.insert(account);
+    public Account insert(@RequestBody Account account) {
+        return this.accountService.insert(account);
     }
+
     @PostMapping("/update")
-    public Account update(@RequestBody Account account){
+    public Account update(@RequestBody Account account) {
         return this.accountService.update(account);
     }
 

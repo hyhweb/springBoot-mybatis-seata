@@ -14,7 +14,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @MapperScan(basePackages = "com.springboot.storageservice.dao")
 public class StorageServiceApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(StorageServiceApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(StorageServiceApplication.class, args);
+    }
 }

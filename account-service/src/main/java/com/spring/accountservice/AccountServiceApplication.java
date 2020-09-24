@@ -14,7 +14,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @MapperScan(basePackages = "com.spring.accountservice.dao")
 public class AccountServiceApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(AccountServiceApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(AccountServiceApplication.class, args);
+    }
 }

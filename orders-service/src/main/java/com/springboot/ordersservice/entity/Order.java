@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 public class Order implements Serializable {
     private static final long serialVersionUID = -64594062057120277L;
-    
+
     private Long id;
     //用户id
     private Long userId;

@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 public class Storage implements Serializable {
     private static final long serialVersionUID = -39584590244259344L;
-    
+
     private Long id;
     //产品id
     private Long productId;

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface StorageFeignClient {
     @GetMapping("/storage/selectOne")
     Storage selectOne(@RequestParam("id") Long id);
+
     @PostMapping("/storage/insert")
     Storage insert(@RequestBody Storage storage);
+
     @PostMapping("/storage/update")
     Storage update(@RequestBody Storage storage);
 

@@ -31,12 +31,14 @@ public class StorageController {
     public Storage selectOne(Long id) {
         return this.storageService.queryById(id);
     }
+
     @PostMapping("/insert")
-    public Storage insert(@RequestBody Storage storage){
+    public Storage insert(@RequestBody Storage storage) {
         return this.storageService.insert(storage);
     }
+
     @PostMapping("/update")
-    public Storage update(@RequestBody Storage storage){
+    public Storage update(@RequestBody Storage storage) {
         return this.storageService.update(storage);
     }
 }

@@ -4,16 +4,16 @@
 
     <resultMap type="com.springboot.storageservice.entity.Storage" id="StorageMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
-               <result property="productId" column="product_id" jdbcType="INTEGER"/>
-               <result property="total" column="total" jdbcType="INTEGER"/>
-               <result property="used" column="used" jdbcType="INTEGER"/>
-               <result property="residue" column="residue" jdbcType="INTEGER"/>
-           </resultMap>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="total" column="total" jdbcType="INTEGER"/>
+        <result property="used" column="used" jdbcType="INTEGER"/>
+        <result property="residue" column="residue" jdbcType="INTEGER"/>
+    </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="StorageMap">
         select
-          id, product_id, total, used, residue
+        id, product_id, total, used, residue
         from storage
         where id = #{id}
     </select>
@@ -21,7 +21,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="StorageMap">
         select
-          id, product_id, total, used, residue
+        id, product_id, total, used, residue
         from storage
         limit #{offset}, #{limit}
     </select>
@@ -29,7 +29,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="StorageMap">
         select
-          id, product_id, total, used, residue
+        id, product_id, total, used, residue
         from storage
         <where>
             <if test="id != null">

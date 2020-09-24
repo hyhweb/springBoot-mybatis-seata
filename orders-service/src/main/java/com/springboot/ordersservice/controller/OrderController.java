@@ -31,10 +31,10 @@ public class OrderController {
      */
     @Resource
     private OrderService orderService;
-   @Autowired
-   private AccountFeignClient accountFeignClient;
-   @Autowired
-   private StorageFeignClient storageFeignClient;
+    @Autowired
+    private AccountFeignClient accountFeignClient;
+    @Autowired
+    private StorageFeignClient storageFeignClient;
 
     private Lock lock = new ReentrantLock();
 
@@ -48,12 +48,13 @@ public class OrderController {
     public Order selectOne(Long id) {
         return this.orderService.queryById(id);
     }
+
     @GetMapping("/insert")
-    @GlobalTransactional(name="my_tx_group",rollbackFor = Exception.class)
+    @GlobalTransactional(name = "my_tx_group", rollbackFor = Exception.class)
     public Object insert() throws TransactionException {
         lock.lock();
         try {
-      System.out.println("-----------------"+RootContext.getXID());
+            System.out.println("-----------------" + RootContext.getXID());
             Order order = new Order();
             order.setUserId(Long.valueOf(1));
             order.setProductId(Long.valueOf(1));
@@ -64,24 +65,24 @@ public class OrderController {
             Account account = accountFeignClient.selectOne(order.getUserId());
             Account newAccount = new Account();
             newAccount.setUserId(order.getUserId());
-            newAccount.setUsed(account.getUsed()+order.getMoney());
-            newAccount.setResidue(account.getResidue()-order.getMoney());
+            newAccount.setUsed(account.getUsed() + order.getMoney());
+            newAccount.setResidue(account.getResidue() - order.getMoney());
             accountFeignClient.update(newAccount);
 
             Storage storage = storageFeignClient.selectOne(order.getProductId());
             Storage newStorage = new Storage();
             newStorage.setProductId(order.getProductId());
-            newStorage.setUsed(storage.getUsed()+order.getCount());
-            newStorage.setResidue(storage.getResidue()-order.getCount());
+            newStorage.setUsed(storage.getUsed() + order.getCount());
+            newStorage.setResidue(storage.getResidue() - order.getCount());
             storageFeignClient.update(newStorage);
             order.setStatus(1);
             orderService.update(order);
 
             return "添加成功";
-        }catch (Exception e){
+        } catch (Exception e) {
             GlobalTransactionContext.reload(RootContext.getXID()).rollback();
             return "添加失败";
-        }finally{
+        } finally {
             lock.unlock();
         }
 
