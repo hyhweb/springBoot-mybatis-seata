@@ -50,7 +50,7 @@ public class OrderController {
     }
 
     @GetMapping("/insert")
-    @GlobalTransactional(name = "my_tx_group", rollbackFor = Exception.class)
+    @GlobalTransactional(name = "my_test_tx_group", rollbackFor = Exception.class)
     public Object insert() throws TransactionException {
         lock.lock();
         try {
